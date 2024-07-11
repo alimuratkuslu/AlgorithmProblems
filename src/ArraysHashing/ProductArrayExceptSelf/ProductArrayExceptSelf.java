@@ -1,4 +1,4 @@
-package ProductArrayExceptSelf;
+package ArraysHashing.ProductArrayExceptSelf;
 
 import java.util.ArrayList;
 import java.util.List;

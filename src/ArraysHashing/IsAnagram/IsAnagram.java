@@ -1,4 +1,4 @@
-package IsAnagram;
+package ArraysHashing.IsAnagram;
 
 import java.util.HashMap;
 

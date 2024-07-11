@@ -1,4 +1,4 @@
-package TopKFrequentElements;
+package ArraysHashing.TopKFrequentElements;
 
 import java.util.ArrayList;
 import java.util.HashMap;
