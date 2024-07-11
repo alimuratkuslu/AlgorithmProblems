@@ -1,7 +1,6 @@
 package AnagramGroups;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class AnagramGroups {
 
@@ -18,8 +17,41 @@ public class AnagramGroups {
 
     public static List<List<String>> groupAnagrams(String[] strs) {
 
+        HashMap<HashMap<Character, Integer>, List<String>> map = new HashMap<>();
+
         for(int i = 0; i < strs.length; i++){
-            
+            HashMap<Character, Integer> patternMap = new HashMap<>();
+            patternMap = calculatePattern(strs[i], patternMap);
+
+            List<String> tempList;
+            if(map.containsKey(patternMap)){
+                tempList = map.get(patternMap);
+            }
+            else{
+                tempList = new ArrayList<>();
+            }
+            tempList.add(strs[i]);
+            map.put(patternMap, tempList);
         }
+
+        List<List<String>> resList = new ArrayList<>();
+        for(Map.Entry<HashMap<Character, Integer>, List<String>> set : map.entrySet()){
+            resList.add(set.getValue());
+        }
+
+        return resList;
+    }
+
+    private static HashMap calculatePattern(String s, HashMap<Character, Integer> map){
+        for(int i = 0; i < s.length(); i++){
+            if(map.containsKey(s.charAt(i))){
+                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
+            }
+            else{
+                map.put(s.charAt(i), 1);
+            }
+        }
+
+        return map;
     }
 }
