@@ -31,6 +31,6 @@ public class ProductOfArrayExceptSelf {
             res[i] = leftProducts[i] * rightProducts[i];
         }
 
-        return new int[]{};
+        return res;
     }
 }
