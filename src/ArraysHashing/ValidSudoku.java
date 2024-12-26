@@ -35,6 +35,22 @@ public class ValidSudoku {
     }
 
     public static boolean isValidSudoku(char[][] board) {
-        return false;
+
+        HashSet<String> seen = new HashSet<>();
+
+        for(int i = 0; i < 9; i++) {
+            for(int j = 0; j < 9; j++) {
+                char curVal = board[i][j];
+                if (curVal != '.') {
+                    if(!seen.add(curVal + "found in row" + i) ||
+                            !seen.add(curVal + "found in column" + j) ||
+                            !seen.add(curVal + "found in sub box " + i/3 + "-" + j/3)) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
     }
 }
