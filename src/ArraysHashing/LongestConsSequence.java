@@ -1,5 +1,7 @@
 package ArraysHashing;
 
+import java.util.HashSet;
+
 public class LongestConsSequence {
 
     public static void main(String[] args){
@@ -12,6 +14,26 @@ public class LongestConsSequence {
     }
 
     public static int longestConsecutive(int[] nums) {
-        return 1;
+
+        HashSet<Integer> set = new HashSet<>();
+        int counter = 0;
+
+        for(int num : nums) {
+            set.add(num);
+        }
+
+        for(int i = 0; i < nums.length; i++) {
+            int currentNum = nums[i];
+            int tempCounter = 1;
+
+            while(set.contains(currentNum + 1)) {
+                currentNum++;
+                tempCounter++;
+            }
+
+            counter = Math.max(counter, tempCounter);
+        }
+
+        return counter;
     }
 }
