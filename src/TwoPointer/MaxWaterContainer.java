@@ -15,21 +15,20 @@ public class MaxWaterContainer {
 
         int l = 0;
         int r = heights.length - 1;
-        int max = Integer.MIN_VALUE;
+        int res = 0;
 
-        while(l < r){
-            int tempMax = Integer.MIN_VALUE;
-            if(heights[l] > heights[r]){
-                tempMax = heights[r] * (r - l);
+        while(l < r) {
+            int tempArea = (r - l) * Math.min(heights[r], heights[l]);
+            res = Math.max(res, tempArea);
+
+            if(heights[l] > heights[r]) {
                 r--;
             }
             else {
-                tempMax = heights[l] * (r - l);
                 l++;
             }
-            max = Math.max(max, tempMax);
         }
 
-        return max;
+        return res;
     }
 }
